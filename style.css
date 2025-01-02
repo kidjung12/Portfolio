@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Itim', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+/* ป้องกันการเลื่อนในแนวนอน */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;  /* ปิดการเลื่อนซ้ายขวา */
+    width: 100%;
+    height: 100%;
+}
+
+/* แถบเมนู */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(29, 29, 29, 0.8); /* เปลี่ยนเป็นสีเทาเข้ม */
+    display: flex;
+    justify-content: center;
+    padding: 18px 0; /* ลด padding เพื่อให้ดูเรียบง่าย */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้กับแถบเมนู */
+    backdrop-filter: blur(10px); /* ทำให้เบลอด้านหลัง */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 40px; /* ลดระยะห่างระหว่างเมนู */
+}
+
+.menu li a {
+    color: #ffffff; /* เปลี่ยนเป็นสีขาวสำหรับข้อความ */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500; /* เพิ่มความหนาของฟอนต์ */
+    transition: color 0.3s, transform 0.3s; /* เพิ่มการเปลี่ยนแปลงเมื่อ hover */
+}
+
+.menu li a:hover {
+    color: #1c92d2; /* เปลี่ยนสีเมื่อชี้ */
+    transform: translateY(-2px); /* ทำให้มีการเคลื่อนไหวเล็กน้อยเมื่อ hover */
+}
+
+
+/* ส่วนหัว */
+.hero-section {
+    height: 100vh;
+    background-image: url('Picture1/3 (2).jpg'); /* ใช้เส้นทางสัมพัทธ์ */
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    color: white; 
+    padding-top: 10px; 
+    position: relative; /* เพิ่มให้เพื่อให้แน่ใจว่าเลเยอร์ซ้อนกัน */
+}
+
+/* เพิ่มเลเยอร์เบลอพื้นหลัง */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* สีดำโปร่งแสงเพื่อทำให้ทึบ */
+    backdrop-filter: blur(5px); /* ทำให้พื้นหลังเบลอ */
+    z-index: 0; /* ให้อยู่เบื้องหลังเนื้อหา */
+}
+
+/* เนื้อหาใน hero-section */
+.hero-content {
+    position: relative; /* เพิ่มให้เนื้อหาอยู่เหนือเลเยอร์เบลอ */
+    z-index: 1; /* เพื่อให้เนื้อหาแสดงอยู่เหนือ */
+}
+
+
+.hero-content h1 {
+    font-size: 6em;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(0, 153, 255, 0.6);
+}
+.typing-wrapper:hover {
+    transform: scale(1.1); /* ปรับขนาดเมื่อเมาส์อยู่เหนือ */
+    transition: transform 0.3s ease; /* เพิ่มการเปลี่ยนแปลงนุ่มนวล */
+}
+
+
+/* ตัวกระพริบ */
+.cursor {
+    display: inline-block;
+    width: 4px;
+    height: 0.8em; /* กำหนดความสูงให้เท่าตัวอักษร */
+    background-color: white;
+    margin-left: 0px; /* ทำให้ติดกับข้อความ */
+    position: relative;
+    left: -10px; /* ปรับให้อยู่ชิดกับข้อความ */
+    top: 2.5px; /* จัดให้อยู่ในระดับเดียวกับข้อความ */
+    animation: fadeAndBlink 1s infinite; /* เพิ่มการ fade ให้จางลง */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), /* เงาแสงขาว */
+                0 0 20px rgba(0, 153, 255, 0.6); /* เงาแสงฟ้า */
+}
+
+@keyframes fadeAndBlink {
+    0% {
+        opacity: 0; /* เริ่มจากจาง */
+    }
+    50% {
+        opacity: 0.5; /* จางเล็กน้อย */
+    }
+    100% {
+        opacity: 1; /* แสดงชัด */
+    }
+}
+
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #333;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background-color: #ddd;
+    transform: translateY(-3px);
+}
+
+/* ส่วนเกี่ยวกับ */
+.about-section {
+    padding: 80px 20px;
+    text-align: center;
+    height: 200vh;
+     background-color: #f4f4f9;
+}
+
+.about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1c92d2;
+    padding-top: 50px;
+}
+
+.about-section p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+/* เพิ่มระยะห่างระหว่างไอคอน */
+header .social-icon {
+    margin-right: 20px; /* กำหนดระยะห่างระหว่างไอคอน */
+    transition: transform 0.3s ease, filter 0.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+    cursor: pointer;
+}
+header .social-icon:hover {
+    transform: scale(1.2); /* ขยายขนาด 1.2 เท่า */
+    filter: brightness(1.5); /* เพิ่มความสว่าง */
+}
+
+/* พอร์ตโฟลิโอ */
+.portfolio-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.portfolio-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1c92d2;
+}
+
+.portfolio-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+/* รูปแบบพื้นฐานของส่วนทักษะ */
+.skills-section {
+    padding: 80px 20px;
+    background-color: #f4f4f9;
+    text-align: center;
+    height: 850px;
+}
+.skills-section1 {
+    padding: 0px 20px;
+    background-color: #f4f4f9;
+    text-align: center;
+    height: 300px;
+}
+.skills-section h2 {
+    font-size: 3em; /* ขนาดของหัวข้อ */
+    margin-top: -30px; /* ระยะห่างด้านล่างหัวข้อ */
+    margin-bottom: 150px; /* ระยะห่างด้านล่างหัวข้อ */
+    color: #333;
+}
+
+/* คอนเทนเนอร์สำหรับการ์ด */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+.skills-container1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+
+/* รูปแบบการ์ด */
+.skill-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* รูปแบบไอคอนในการ์ด */
+.skill-card .icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+/* ข้อความภายในการ์ด */
+.skill-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.skill-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+
+
+/* แกลเลอรี */
+.gallery-section {
+    padding-top: 90px;
+    text-align: center;
+    position: relative; /* ให้เป็นตำแหน่ง relative เพื่อใช้สำหรับ absolute */
+    height: 1000px; /* กำหนดความสูงให้กับแกลเลอรี */
+    background-color: #000000;
+    color: #1c92d2;
+}
+
+.gallery {
+    display: flex; /* ให้แสดงผลเป็น Flexbox */
+    position: absolute; /* ทำให้ภาพเคลื่อนที่ได้ */
+    animation: slide 500s linear infinite; /* สร้างแอนิเมชัน */
+    
+}
+
+.gallery img {
+    width: 250px; /* ขนาดภาพปกติ */
+    height: 165px; /* ขนาดภาพที่แน่นอน */
+    margin: 30px 15px; /* ระยะห่างระหว่างภาพ */
+    transition: transform 0.3s ease; /* เพิ่มการเปลี่ยนแปลง */
+}
+
+.gallery img:hover {
+    transform: scale(1.1); /* ซูมเข้าขณะ hover */
+}
+
+.gallery1 {
+    margin-top: 200px; /* เพิ่มระยะห่างจากด้านบน 50px */
+    display: flex; /* ให้แสดงผลเป็น Flexbox */
+    position: absolute; /* ทำให้ภาพเคลื่อนที่ได้ */
+    animation: slide1 500s linear infinite; /* สร้างแอนิเมชัน */
+}
+
+.gallery1 img {
+    width: 250px; /* ขนาดภาพปกติ */
+    height: 165px; /* ขนาดภาพที่แน่นอน */
+    margin: 30px 15px; /* ระยะห่างระหว่างภาพ */
+    transition: transform 0.3s ease; /* เพิ่มการเปลี่ยนแปลง */
+}
+
+.gallery1 img:hover {
+    transform: scale(1.1); /* ซูมเข้าขณะ hover */
+}
+.gallery2 {
+    margin-top: 400px; /* เพิ่มระยะห่างจากด้านบน 50px */
+    display: flex; /* ให้แสดงผลเป็น Flexbox */
+    position: absolute; /* ทำให้ภาพเคลื่อนที่ได้ */
+    animation: slide2 500s linear infinite; /* สร้างแอนิเมชัน */
+}
+
+.gallery2 img {
+    width: 250px; /* ขนาดภาพที่กำหนด */
+    height: 165px; /* ขนาดภาพที่กำหนด */
+    margin: 30px 15px; /* ระยะห่างระหว่างภาพ */
+    transition: transform 0.3s ease; /* เพิ่มการเปลี่ยนแปลง */
+}
+
+.gallery2 img:hover {
+    transform: scale(1.1); /* ซูมเข้าขณะ hover */
+}
+.gallery3 {
+    margin-top: 600px; /* เพิ่มระยะห่างจากด้านบน 50px */
+    display: flex;
+    position: absolute; /* ทำให้ภาพเคลื่อนที่ได้ */
+    animation: slide 500s linear infinite; /* สร้างแอนิเมชัน */
+}
+
+.gallery3 img {
+    width: 250px; /* ขนาดภาพปกติ */
+
+    margin: 30px 15px; /* ระยะห่างระหว่างภาพ */
+    transition: transform 0.3s ease; /* เพิ่มการเปลี่ยนแปลง */
+}
+
+.gallery3 img:hover {
+    transform: scale(1.1); /* ซูมเข้าขณะ hover */
+}
+#iam-programmer {
+    font-size: 2.5em;
+    color: #ff9e2f; /* สีส้มเพื่อให้ข้อความโดดเด่น */
+    margin-top: 20px;
+    font-weight: 600;
+    animation: fadeInUp 2s ease-out;
+}
+.cursor1 {
+    display: inline-block;
+    width: 10px;
+    height: 30px;
+    background-color: #ffffff;
+    animation: blink 0.7s infinite;
+}
+.about-img{
+    padding: 0 200px;
+}
+/* ส่วนท้าย */
+.about-page {
+    flex-grow: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 10; /* ให้ฟุตเตอร์อยู่ด้านบนสุดเมื่อเนื้อหามีความยาว */
+    color: #fff;
+}
+a {
+    text-decoration: none;
+}
+
+
+
+/* Animation */
+@keyframes slide {
+    0% {
+        transform: translateX(0); /* เริ่มจากจุดเริ่มต้น */
+    }
+    50% {
+        transform: translateX(-100%); /* เลื่อนไปจนถึงปลาย */
+    }
+    100% {
+        transform: translateX(0); /* กลับมาที่จุดเริ่มต้น */
+    }
+}
+
+@keyframes slide1 {
+    0% {
+        transform: translateX(-5%); /* เริ่มจากจุดเริ่มต้น */
+    }
+    50% {
+        transform: translateX(-105%); /* เลื่อนไปจนถึงปลาย */
+    }
+    100% {
+        transform: translateX(0); /* กลับมาที่จุดเริ่มต้น */
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translateX(-4%); /* เริ่มจากจุดเริ่มต้น */
+    }
+    50% {
+        transform: translateX(-110%); /* เลื่อนไปจนถึงปลาย */
+    }
+    100% {
+        transform: translateX(0); /* กลับมาที่จุดเริ่มต้น */
+    }
+}
+
+@keyframes slide3 {
+    0% {
+        transform: translateX(); /* เริ่มจากจุดเริ่มต้น */
+    }
+    50% {
+        transform: translateX(-115%); /* เลื่อนไปจนถึงปลาย */
+    }
+    100% {
+        transform: translateX(0); /* กลับมาที่จุดเริ่มต้น */
+    }
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
